@@ -1,4 +1,9 @@
 manifest:
   package: rew.ui-sdl
 entries:
-  main: main.coffee
+  main: main.brew
+build:
+  - input: main.coffee
+    output: main.brew
+    using: brew
+    cleanup: ./features
