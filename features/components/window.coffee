@@ -15,7 +15,7 @@ function Window(
   if @flags == "resizable" {
     @flags = ui::consts::WINDOW.RESIZABLE
   } else if @flags == "opengl" {
-    @flags = ui::consts::WINDOW.OPENGL
+    @flags = ui::consts::WINDOW.OPENGL | ui::consts::WINDOW.SHOWN
   }
 
   @_ffi_values = {}
@@ -62,7 +62,17 @@ function Window::setTitle(title)
 function Window::createRenderer(flags = ui::consts::RENDERER.ACCELERATED, index = -1)
   Renderer::new @, flags, index
 
-function Window::GL()
+function Window::GL(version_major = 0, version_minor = 0, profile = ui::consts::GL.PROFILE_CORE)
+      
+  if version_major
+    SDL_GL_SetAttribute(ui::consts::GL.MAJOR_VERSION, version_major or 3);
+  
+  if version_minor
+    SDL_GL_SetAttribute(ui::consts::GL.MINOR_VERSION, version_minor or 2);
+  
+  if profile
+    SDL_GL_SetAttribute(ui::consts::GL.PROFILE_MASK, profile);
+
   unless @_ffi_values.GL
     @_ffi_values.GL = SDL_GL_CreateContext @_ffi_values.win
     unless  @_ffi_values.GL

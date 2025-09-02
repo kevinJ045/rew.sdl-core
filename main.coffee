@@ -6,10 +6,10 @@ import "./_std.coffee";
 # Main Libraries
 import "./features/const.coffee";
 import "./features/utils.coffee";
-import { SDL, SDL_ttf, libGL } from "./features/ffi.coffee";
+import { SDL, SDL_ttf } from "./features/ffi.coffee";
 ui::SDL = SDL;
 ui::SDL_ttf = SDL_ttf;
-ui::libGL = libGL;
+# ui::libGL = libGL;
 
 import "./features/loop.coffee";
 
@@ -24,4 +24,4 @@ function ui::init(init)
 import "./features/registry.coffee";
 import "./features/components/init.coffee";
 
-native ui;
+module.exports = ui;

@@ -61,6 +61,7 @@ SDL_function_map = instantiate class {
   ffi_type(ffi::ptr) SDL_GL_CreateContext = -> ffi::ptr
   ffi_type(ffi::ptr, ffi::ptr) SDL_GL_MakeCurrent = -> ffi::i32
   ffi_type(ffi::ptr) SDL_GL_SwapWindow = -> ffi::void
+  ffi_type(ffi::i32, ffi::i32) SDL_GL_SetAttribute = -> ffi::i32
   ffi_type(ffi::ptr) SDL_GL_DeleteContext = -> ffi::void
 
   ffi_type(ffi::ptr) SDL_Vulkan_LoadLibrary = -> ffi::bool
@@ -79,52 +80,52 @@ SDL_ttf_function_map = instantiate class {
   ffi_type(ffi::ptr, ffi::buffer, ffi::u64, ffi::u32) TTF_RenderText_Solid_Wrapped = -> ffi::ptr
 }
 
-GL_function_map = instantiate class {
-  ffi_type(ffi::i32,ffi::ptr) glGenBuffers = -> ffi::void
-  ffi_type(ffi::u32,ffi::u32) glBindBuffer = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::u32) glBufferData = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::i32,ffi::ptr) glBufferSubData = -> ffi::void
-  ffi_type(ffi::i32,ffi::ptr) glDeleteBuffers = -> ffi::void
-  ffi_type(ffi::u32) glEnableVertexAttribArray = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::u32,ffi::u8,ffi::i32,ffi::i32) glVertexAttribPointer = -> ffi::void
-  ffi_type(ffi::u32) glDisableVertexAttribArray = -> ffi::void
-  ffi_type(ffi::u32) glCreateShader = -> ffi::u32
-  ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::ptr) glShaderSource = -> ffi::void
-  ffi_type(ffi::u32) glCompileShader = -> ffi::void
-  ffi_type(ffi::u32,ffi::u32,ffi::ptr) glGetShaderiv = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::ptr) glGetShaderInfoLog = -> ffi::void
-  ffi_type(ffi::u32) glDeleteShader = -> ffi::void
-  ffi_type() glCreateProgram = -> ffi::u32
-  ffi_type(ffi::u32,ffi::u32) glAttachShader = -> ffi::void
-  ffi_type(ffi::u32) glLinkProgram = -> ffi::void
-  ffi_type(ffi::u32,ffi::u32,ffi::ptr) glGetProgramiv = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::ptr) glGetProgramInfoLog = -> ffi::void
-  ffi_type(ffi::u32) glUseProgram = -> ffi::void
-  ffi_type(ffi::u32) glDeleteProgram = -> ffi::void
-  ffi_type(ffi::u32,ffi::ptr) glGetUniformLocation = -> ffi::i32
-  ffi_type(ffi::i32,ffi::f32) glUniform1f = -> ffi::void
-  ffi_type(ffi::i32,ffi::i32) glUniform1i = -> ffi::void
-  ffi_type(ffi::i32,ffi::f32,ffi::f32,ffi::f32) glUniform3f = -> ffi::void
-  ffi_type(ffi::i32,ffi::i32,ffi::u8,ffi::ptr) glUniformMatrix4fv = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::i32) glDrawArrays = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::u32,ffi::ptr) glDrawElements = -> ffi::void
-  ffi_type(ffi::u32) glEnable = -> ffi::void
-  ffi_type(ffi::u32) glDisable = -> ffi::void
-  ffi_type(ffi::u32) glDepthFunc = -> ffi::void
-  ffi_type(ffi::u32,ffi::u32) glBlendFunc = -> ffi::void
-  ffi_type(ffi::u32) glClear = -> ffi::void
-  ffi_type(ffi::f32,ffi::f32,ffi::f32,ffi::f32) glClearColor = -> ffi::void
-  ffi_type(ffi::i32,ffi::i32,ffi::i32,ffi::i32) glViewport = -> ffi::void
-  ffi_type(ffi::i32,ffi::ptr) glGenTextures = -> ffi::void
-  ffi_type(ffi::u32,ffi::u32) glBindTexture = -> ffi::void
-  ffi_type(ffi::u32,ffi::i32,ffi::i32,ffi::i32,ffi::i32,ffi::i32,ffi::u32,ffi::u32,ffi::ptr) glTexImage2D = -> ffi::void
-  ffi_type(ffi::u32,ffi::u32,ffi::i32) glTexParameteri = -> ffi::void
-  ffi_type(ffi::i32,ffi::ptr) glDeleteTextures = -> ffi::void
-  ffi_type() glEnd = -> ffi::void
-  ffi_type(ffi::u32) glBegin = -> ffi::void
-  ffi_type(ffi::f32,ffi::f32,ffi::f32) glColor3f = -> ffi::void
-  ffi_type(ffi::f32,ffi::f32,ffi::f32) glVertex3f = -> ffi::void
-}
+# GL_function_map = instantiate class {
+#   ffi_type(ffi::i32,ffi::ptr) glGenBuffers = -> ffi::void
+#   ffi_type(ffi::u32,ffi::u32) glBindBuffer = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::u32) glBufferData = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::i32,ffi::ptr) glBufferSubData = -> ffi::void
+#   ffi_type(ffi::i32,ffi::ptr) glDeleteBuffers = -> ffi::void
+#   ffi_type(ffi::u32) glEnableVertexAttribArray = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::u32,ffi::u8,ffi::i32,ffi::i32) glVertexAttribPointer = -> ffi::void
+#   ffi_type(ffi::u32) glDisableVertexAttribArray = -> ffi::void
+#   ffi_type(ffi::u32) glCreateShader = -> ffi::u32
+#   ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::ptr) glShaderSource = -> ffi::void
+#   ffi_type(ffi::u32) glCompileShader = -> ffi::void
+#   ffi_type(ffi::u32,ffi::u32,ffi::ptr) glGetShaderiv = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::ptr) glGetShaderInfoLog = -> ffi::void
+#   ffi_type(ffi::u32) glDeleteShader = -> ffi::void
+#   ffi_type() glCreateProgram = -> ffi::u32
+#   ffi_type(ffi::u32,ffi::u32) glAttachShader = -> ffi::void
+#   ffi_type(ffi::u32) glLinkProgram = -> ffi::void
+#   ffi_type(ffi::u32,ffi::u32,ffi::ptr) glGetProgramiv = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::ptr,ffi::ptr) glGetProgramInfoLog = -> ffi::void
+#   ffi_type(ffi::u32) glUseProgram = -> ffi::void
+#   ffi_type(ffi::u32) glDeleteProgram = -> ffi::void
+#   ffi_type(ffi::u32,ffi::ptr) glGetUniformLocation = -> ffi::i32
+#   ffi_type(ffi::i32,ffi::f32) glUniform1f = -> ffi::void
+#   ffi_type(ffi::i32,ffi::i32) glUniform1i = -> ffi::void
+#   ffi_type(ffi::i32,ffi::f32,ffi::f32,ffi::f32) glUniform3f = -> ffi::void
+#   ffi_type(ffi::i32,ffi::i32,ffi::u8,ffi::ptr) glUniformMatrix4fv = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::i32) glDrawArrays = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::u32,ffi::ptr) glDrawElements = -> ffi::void
+#   ffi_type(ffi::u32) glEnable = -> ffi::void
+#   ffi_type(ffi::u32) glDisable = -> ffi::void
+#   ffi_type(ffi::u32) glDepthFunc = -> ffi::void
+#   ffi_type(ffi::u32,ffi::u32) glBlendFunc = -> ffi::void
+#   ffi_type(ffi::u32) glClear = -> ffi::void
+#   ffi_type(ffi::f32,ffi::f32,ffi::f32,ffi::f32) glClearColor = -> ffi::void
+#   ffi_type(ffi::i32,ffi::i32,ffi::i32,ffi::i32) glViewport = -> ffi::void
+#   ffi_type(ffi::i32,ffi::ptr) glGenTextures = -> ffi::void
+#   ffi_type(ffi::u32,ffi::u32) glBindTexture = -> ffi::void
+#   ffi_type(ffi::u32,ffi::i32,ffi::i32,ffi::i32,ffi::i32,ffi::i32,ffi::u32,ffi::u32,ffi::ptr) glTexImage2D = -> ffi::void
+#   ffi_type(ffi::u32,ffi::u32,ffi::i32) glTexParameteri = -> ffi::void
+#   ffi_type(ffi::i32,ffi::ptr) glDeleteTextures = -> ffi::void
+#   ffi_type() glEnd = -> ffi::void
+#   ffi_type(ffi::u32) glBegin = -> ffi::void
+#   ffi_type(ffi::f32,ffi::f32,ffi::f32) glColor3f = -> ffi::void
+#   ffi_type(ffi::f32,ffi::f32,ffi::f32) glVertex3f = -> ffi::void
+# }
 
 sdl_libname = rew::os::clamp(
   'SDL2.dll',
@@ -138,14 +139,14 @@ sdlttf_libname = rew::os::clamp(
   '.artifacts/libSDL2_ttf-2.0.0.dylib'
 )
 
-gl_libname = rew::os::clamp(
-  'GL.dll',
-  'libGL.so',
-  '.artifacts/libSDL2_ttf-2.0.0.dylib'
-)
+# gl_libname = rew::os::clamp(
+#   'GL.dll',
+#   'libGL.so',
+#   '.artifacts/libSDL2_ttf-2.0.0.dylib'
+# )
 
 SDL = ffi::open sdl_libname, SDL_function_map
 SDL_ttf = ffi::open sdlttf_libname, SDL_ttf_function_map
-libGL = ffi::open gl_libname, GL_function_map
+# libGL = ffi::open gl_libname, GL_function_map
 
-export { SDL, SDL_ttf, libGL };
+export { SDL, SDL_ttf };

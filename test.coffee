@@ -44,14 +44,14 @@ testing::describe 'GL', (it) ->
 
     ui::loop::run ->
 
-      ui::libGL.glClearColor(1, 1, 1, 1);
-      ui::libGL.glClear(GL_COLOR_BUFFER_BIT);
+      # ui::libGL.glClearColor(1, 1, 1, 1);
+      # ui::libGL.glClear(GL_COLOR_BUFFER_BIT);
 
-      ui::libGL.glBegin(GL_TRIANGLES);
-      ui::libGL.glColor3f(1, 0, 0); ui::libGL.glVertex3f(-0.5, -0.5, 0);
-      ui::libGL.glColor3f(0, 1, 0); ui::libGL.glVertex3f(0.5, -0.5, 0);
-      ui::libGL.glColor3f(0, 0, 1); ui::libGL.glVertex3f(0, 0.5, 0);
-      ui::libGL.glEnd();
+      # ui::libGL.glBegin(GL_TRIANGLES);
+      # ui::libGL.glColor3f(1, 0, 0); ui::libGL.glVertex3f(-0.5, -0.5, 0);
+      # ui::libGL.glColor3f(0, 1, 0); ui::libGL.glVertex3f(0.5, -0.5, 0);
+      # ui::libGL.glColor3f(0, 0, 1); ui::libGL.glVertex3f(0, 0.5, 0);
+      # ui::libGL.glEnd();
 
       win.GLSwap()
 
